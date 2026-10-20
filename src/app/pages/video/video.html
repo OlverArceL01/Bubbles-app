@@ -1,0 +1,40 @@
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5 h-full">
+    <video
+        #videoPlayer
+        class="h-full object-fill"
+        [src]="name + '.mp4'"
+        autoplay
+        loop
+        muted
+        playsinline
+        preload="auto">
+    </video>
+    
+    <div class="h-full w-full flex justify-center items-center p-2">
+        @if (currentPrediction(); as prediction) {
+            <div class="w-full md:max-w-3xl md:m-2">
+                <img
+                    [src]="'data:image/png;base64,' + prediction.image"
+                    class="w-full h-auto rounded-lg"
+                    alt="Bubble segmentation prediction">
+
+                <p class="text-xl md:text-3xl font-bold text-center my-5">
+                    Bubble Area Percentage:
+                    {{ prediction.bubble_area_percentage | number:'1.2-2' }}%
+                </p>
+
+                @if (lastUpdate(); as lastUpdate) {
+                    <p class="text-sm md:text-base text-base-content/60 italic text-center">
+                        Last Update:
+                        {{ lastUpdate | date:'dd-MM-yyyy HH:mm:ss' }}
+                    </p>
+                }
+            </div>
+        } @else {
+            <div class="flex flex-col items-center justify-center gap-2" role="status">
+                <span class="loading loading-spinner loading-lg"></span>
+                <p>Loading segmentation...</p>
+            </div>
+        }
+    </div>
+</div>

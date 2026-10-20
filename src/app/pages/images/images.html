@@ -1,0 +1,55 @@
+<div class="flex justify-center px-4 py-6 min-h-full text-black">
+  <form
+    class="fieldset border-white border-2 bg-emerald-500 rounded-box w-full max-w-4xl p-5 md:p-8"
+    [formRoot]="segmentationForm"
+  >
+    <legend class="fieldset-legend text-xl font-bold text-black">
+      Image Segmentation
+    </legend>
+
+    <p class="text-sm  mb-6">
+      Upload a bubble image to generate its segmentation and calculate the Bubble Area Percentage (BAP).
+    </p>
+
+    <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+      <div class="flex flex-col gap-1">
+        <label class="label font-semibold">Input Image</label>
+        <p class="text-xs text-black italic">
+          PNG · 800 × 600 px · Maximum 5 MB
+        </p>
+      </div>
+
+      <input
+        class="file-input file-input-bordered file-input-neutral w-full md:max-w-sm bg-white"
+        type="file"
+        accept="image/png"
+        (change)="changeImage($event)"
+      />
+    </div>
+    <button
+      type="submit"
+      [disabled]="segmentationForm().invalid()"
+      class="btn bg-cyan-400 disabled:bg-gray-600 disabled:text-gray-400 hover:bg-cyan-300 text-black border-none w-full sm:w-auto mt-6"
+    >
+      Make Segmentation
+    </button>
+
+    <div class="divider divider-neutral my-6"></div>
+
+    <h2 class="text-lg md:text-xl font-bold">
+      Segmentation Results
+    </h2>
+    @if(currentPrediction(); as prediction){
+      <img
+          [src]="'data:image/png;base64,' + prediction.image"
+          class="w-full h-auto rounded-lg"
+          alt="Bubble segmentation prediction">
+    }@else{
+      <p class="text-sm text-black mt-1">
+        The predicted bubble mask and area percentage will appear here.
+      </p>
+
+    }
+  </form>
+</div>
+```

@@ -1,0 +1,36 @@
+<div class="navbar shadow-sm bg-emerald-300">
+  <div class="navbar-start">
+    <div class="dropdown">
+      <div tabindex="0" role="button" class="btn btn-ghost text-black hover:bg-emerald-400 lg:hidden">
+        <svg aria-label="Menu" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
+      </div>
+      <ul
+        tabindex="-1"
+        class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+        <li><a
+            [routerLink]="['/videos']" 
+            >Video Segmentation</a></li>
+        <li><a
+            [routerLink]="['/images']" 
+            >Image Segmentation</a></li>
+      </ul>
+    </div>
+    <a class="text-xl font-bold ml-2 text-black">Bubbles Segmentation
+    </a>
+    
+  </div>
+  <div class="navbar-end hidden lg:flex">
+    <ul class="menu menu-horizontal px-1">
+        <li>
+          <a 
+            [routerLink]="['/videos']" 
+            routerLinkActive="btn-active text-white"
+            class="btn btn-outline border-black hover:text-white text-black mx-1">Video Segmentation</a></li>
+        <li><a 
+            [routerLink]="['/images']" 
+            routerLinkActive="btn-active text-white"
+            class="btn btn-outline border-black hover:text-white text-black mx-1" 
+            >Image Segmentation</a></li>
+    </ul>
+  </div>
+</div>
