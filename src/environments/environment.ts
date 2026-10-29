@@ -1,3 +1,3 @@
 export const environment = {
-    apiUrl: 'https://api.bubbles.olver.site'
+    apiUrl: 'https://bubbles-api.olver.cl'
 };
